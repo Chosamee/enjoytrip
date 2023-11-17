@@ -2,6 +2,11 @@
 import { RouterLink, RouterView } from 'vue-router'
 import KakaoMap from './components/mapComp.vue'
 
+import { Nav, Alert } from '@/components'
+import { useAuthStore } from '@/stores';
+
+const authStore = useAuthStore();
+
 </script>
 
 <template>
@@ -20,10 +25,19 @@ import KakaoMap from './components/mapComp.vue'
     <KakaoMap />
   </div>
 
+  <div class="app-container" :class="authStore.user && 'bg-light'">
+    <Nav />
+    <Alert />
+    <div class="container pt-4 pb-4">
+      <RouterView />
+    </div>
+  </div>
+
   <RouterView />
 </template>
 
 <style scoped>
+@import '@/assets/base.css';
 header {
   line-height: 1.5;
   max-height: 100vh;
