@@ -4,6 +4,7 @@ import { useAuthStore, useAlertStore } from '@/stores';
 import { Home } from '@/views';
 import accountRoutes from "./account.routes";
 import userRoutes from "./users.routes";
+import HomeView from '../views/HomeView.vue'
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,5 +44,3 @@ router.beforeEach(async (to) => {
     return '/account/login';
   }
 });
-
-export default router;
