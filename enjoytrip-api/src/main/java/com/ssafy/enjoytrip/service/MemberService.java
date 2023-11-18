@@ -1,6 +1,10 @@
 package com.ssafy.enjoytrip.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.persistence.NoResultException;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,21 +29,23 @@ public class MemberService {
     }
 
     public Long login(Member member) {
-        List<Member> findMembers = memberRepository.findByEmailPassword(member.getEmail(), member.getPassword());
-        if (findMembers.isEmpty()) {
+        try {
+            memberRepository.findByEmailPassword(member.getEmail(), member.getPassword());
+        } catch (Exception e) {
             throw new IllegalStateException("이메일 비밀번호 확인");
         }
         return member.getId();
     }
 
     private void checkDuplicateMember(Member member) {
-        List<Member> findMembers = memberRepository.findByEmail(member.getEmail());
-        if (!findMembers.isEmpty()) {
+        try {
+            memberRepository.findByEmail(member.getEmail());
             throw new IllegalStateException("이미 존재하는 회원입니다.");
+        } catch (NoResultException e) {
+
         }
     }
 
-    // 회원 전체 조회
     public List<Member> findMembers() {
         return memberRepository.findAll();
     }
@@ -48,4 +54,21 @@ public class MemberService {
         return memberRepository.findOne(memberId);
     }
 
+    public void saveRefreshToken(String email, String refreshToken) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("email", email);
+        map.put("token", refreshToken);
+        memberRepository.saveRefreshToken(map);
+    }
+
+    public Object getRefreshToken(String userId) {
+        return memberRepository.getRefreshToken(userId);
+    }
+
+    public void deleRefreshToken(String email) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("email", email);
+        map.put("token", null);
+        memberRepository.deleteRefreshToken(map);
+    }
 }
