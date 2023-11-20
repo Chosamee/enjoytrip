@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.persistence.NoResultException;
 
+import com.ssafy.enjoytrip.repository.SampleRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,10 +16,11 @@ import com.ssafy.enjoytrip.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
+    private final SampleRepository sampleRepository;
 
     // 회원 가입
     @Transactional
@@ -55,10 +57,15 @@ public class MemberService {
     }
 
     public void saveRefreshToken(String email, String refreshToken) {
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("email", email);
-        map.put("token", refreshToken);
-        memberRepository.saveRefreshToken(map);
+//        Map<String, String> map = new HashMap<String, String>();
+//        map.put("email", email);
+//        map.put("token", refreshToken);
+//        memberRepository.saveRefreshToken(map);
+        Member member = Member.builder()
+                .email(email)
+                .token(refreshToken)
+                .build();
+        sampleRepository.saveAndFlush(member);
     }
 
     public Object getRefreshToken(String userId) {

@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
 
     private final MemberService memberService;
-    private JWTUtil jwtUtil;
+    private final JWTUtil jwtUtil;
 
     @Operation(summary = "regist member", description = "회원가입")
     @PostMapping("/regist")
@@ -47,11 +47,10 @@ public class MemberController {
         }
     }
 
-    @PostMapping()
+    @PostMapping("/login")
     public ResponseEntity<?> loginMember(
             @RequestBody @ApiParam(value = "멤버 정보.", required = true) MemberDto memberDto) {
         log.info("loginMember memberDto - {}", memberDto.toString());
-
         Map<String, Object> resultMap = new HashMap<String, Object>();
         HttpStatus status = HttpStatus.ACCEPTED;
         try {
@@ -62,7 +61,7 @@ public class MemberController {
 
             String accessToken = jwtUtil.createAccessToken(memberDto.getEmail());
             String refreshToken = jwtUtil.createRefreshToken(memberDto.getEmail());
-
+            System.out.println(accessToken);
             memberService.saveRefreshToken(memberDto.getEmail(), refreshToken);
 
             resultMap.put("access-token", accessToken);
@@ -71,6 +70,7 @@ public class MemberController {
             status = HttpStatus.CREATED;
 
         } catch (Exception e) {
+            e.printStackTrace();
             status = HttpStatus.UNAUTHORIZED;
         }
         return new ResponseEntity<Map<String, Object>>(resultMap, status);

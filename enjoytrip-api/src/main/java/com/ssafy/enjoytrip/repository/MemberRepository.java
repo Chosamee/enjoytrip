@@ -43,7 +43,7 @@ public class MemberRepository {
     }
 
     public void saveRefreshToken(Map<String, String> map) {
-        findByEmail(map.get("email")).setToken(null);
+        findByEmail(map.get("email")).setToken(map.get("token"));
     }
 
     public Object getRefreshToken(String email) {
