@@ -6,7 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BoardDto {
-    private String userEmail;
+    private Long articleno;
+    private String email;
     private String title;
     private String content;
     private int hit;
