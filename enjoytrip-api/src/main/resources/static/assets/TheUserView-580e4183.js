@@ -1,0 +1,1 @@
+import{_ as t,r,o,c as s,a as c,b as a}from"./index-7fdafe8d.js";const n={},_={class:"container text-center mt-3"},i=a("div",{class:"alert alert-primary",role:"alert"},"Member Service",-1);function l(d,m){const e=r("router-view");return o(),s("div",_,[i,c(e)])}const v=t(n,[["render",l]]);export{v as default};

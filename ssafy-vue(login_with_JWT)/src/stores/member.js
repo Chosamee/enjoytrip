@@ -3,7 +3,7 @@ import { useRouter } from "vue-router";
 import { defineStore } from "pinia";
 import { jwtDecode } from "jwt-decode";
 
-import { userConfirm, findById, tokenRegeneration, logout } from "@/api/user";
+import { userConfirm, findById, tokenRegeneration, logout, userRegistConfirm } from "@/api/user";
 import { httpStatusCode } from "@/util/http-status";
 
 export const useMemberStore = defineStore("memberStore", () => {
@@ -44,11 +44,17 @@ export const useMemberStore = defineStore("memberStore", () => {
         registUser,
         (response) => {
           if (response.status === httpStatusCode.CREATE) {
-
+              console.log("회원가입 성공");
           }
+          else {
+              console.log("회원가입 실패");
+          }
+        },
+        (error) => {
+            console.error(error);
         }
-    )
-  }
+    );
+  };
 
   const getUserInfo = (token) => {
     let decodeToken = jwtDecode(token);
@@ -113,18 +119,23 @@ export const useMemberStore = defineStore("memberStore", () => {
   };
 
   const userLogout = async (userid) => {
+
     await logout(
-      userid,
+       userid,
       (response) => {
         if (response.status === httpStatusCode.OK) {
           isLogin.value = false;
           userInfo.value = null;
           isValidToken.value = false;
+
+          sessionStorage.removeItem("accessToken");
+          sessionStorage.removeItem("refreshToken");
         } else {
           console.error("유저 정보 없음!!!!");
         }
       },
       (error) => {
+          console.log("userLogout() userid ::: ", userid);
         console.log(error);
       }
     );
@@ -139,5 +150,7 @@ export const useMemberStore = defineStore("memberStore", () => {
     getUserInfo,
     tokenRegenerate,
     userLogout,
+    userRegist,
   };
-});
+},{ persist: { storage: localStorage } }
+);

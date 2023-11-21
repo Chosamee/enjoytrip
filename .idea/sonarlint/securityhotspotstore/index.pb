@@ -101,3 +101,7 @@ r
 Benjoytrip-api/src/main/java/com/ssafy/enjoytrip/domain/Member.java,d\9\d99caebb3f1dd775c1041080fdb06e3f243fb90a
 H
 enjoytrip-api/.gitignore,6\f\6fac4f26f24312849719cf61674aa5f5dcd0b6f6
+y
+Ienjoytrip-api/src/main/java/com/ssafy/enjoytrip/service/BoardService.java,0\4\043339eff68e47e11a3fa586a4496a9384a69de3
+t
+Dssafy-vue(login_with_JWT)/src/components/layout/TheHeadingNavbar.vue,7\f\7f676d86a8b1666a4ad48c211b629f184d67e4ed
