@@ -1,56 +1,23 @@
 package com.ssafy.enjoytrip.repository;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.persistence.EntityManager;
-
-import org.springframework.stereotype.Repository;
-
 import com.ssafy.enjoytrip.domain.Member;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 
-@Repository
-@RequiredArgsConstructor
-public class MemberRepository {
-    private final EntityManager em;
+import java.util.Optional;
 
-    public void save(Member member) {
-        em.persist(member);
-    }
+public interface SampleRepository extends JpaRepository<Member, Long> {
+    Optional<Member> findByEmail(String email);
 
-    public Member findOne(Long id) {
-        return em.find(Member.class, id);
-    }
+    Optional<Member> findByEmailAndPassword(String email, String password);
 
-    public List<Member> findAll() {
-        return em.createQuery("select m from Member m", Member.class)
-                .getResultList();
-    }
+    @Modifying(clearAutomatically = true)
+    @Query("update Member m set m.token=:token where m.email=:email")
+    void saveRefreshToken(String email, String token);
 
-    public Member findByEmail(String email) {
-        return em.createQuery("select m from Member m where m.email = :email", Member.class)
-                .setParameter("email", email)
-                .getSingleResult();
-    }
-
-    public Member findByEmailPassword(String email, String password) {
-        return em.createQuery("select m from Member m where m.email = :email and m.password = :password", Member.class)
-                .setParameter("email", email)
-                .setParameter("password", password)
-                .getSingleResult();
-    }
-
-    public void saveRefreshToken(Map<String, String> map) {
-        findByEmail(map.get("email")).setToken(map.get("token"));
-    }
-
-    public Object getRefreshToken(String email) {
-        return findByEmail(email).getToken();
-    }
-
-    public void deleteRefreshToken(Map<String, String> map) {
-        em.remove(findByEmail(map.get("email")).getToken());
-    }
+    @Modifying(clearAutomatically = true)
+    @Query("update Member m set m.token=NULL where m.email=:email")
+    void deleteRefreshToken(String email);
 }
