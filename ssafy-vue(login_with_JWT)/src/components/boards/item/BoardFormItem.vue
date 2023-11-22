@@ -2,6 +2,8 @@
 import { ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { registArticle, getModifyArticle, modifyArticle } from "@/api/board";
+import { useMemberStore } from "@/stores/member";
+import { storeToRefs } from "pinia";
 
 const router = useRouter();
 const route = useRoute();
@@ -10,11 +12,14 @@ const props = defineProps({ type: String });
 
 const isUseId = ref(false);
 
+const memberStore = useMemberStore()
+const { userInfo } = storeToRefs(memberStore);
+
 const article = ref({
   articleno: 0,
   title: "",
   content: "",
-  email: "",
+  email: userInfo.value.email,
   hit: 0,
   createdDate: "",
 });
@@ -114,6 +119,7 @@ function moveList() {
         v-model="article.email"
         :disabled="isUseId"
         placeholder="작성자ID..."
+        readonly
       />
     </div>
     <div class="mb-3">

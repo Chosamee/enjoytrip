@@ -21,7 +21,7 @@ import lombok.*;
 @EntityListeners(AuditingEntityListener.class)
 public class Board {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "BOARD_GENERATOR")
     @Column(name = "articleno")
     private Long articleno;
     private String email;

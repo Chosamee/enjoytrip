@@ -58,7 +58,7 @@ function onDeleteArticle() {
       </div>
       <div class="col-lg-10 text-start">
         <div class="row my-2">
-          <h2 class="text-secondary px-5">{{ article.articleNo }}. {{ article.title }}</h2>
+          <h2 class="text-secondary px-5">{{ article.articleno }}. {{ article.title }}</h2>
         </div>
         <div class="row">
           <div class="col-md-8">
@@ -68,9 +68,9 @@ function onDeleteArticle() {
                 src="https://raw.githubusercontent.com/twbs/icons/main/icons/person-fill.svg"
               />
               <p>
-                <span class="fw-bold">안효인</span> <br />
+                <span class="fw-bold">{{ article.email }}</span> <br />
                 <span class="text-secondary fw-light">
-                  {{ article.createdDate }}1 조회 : {{ article.hit }}
+                  {{ article.createdDate }} 조회 : {{ article.hit }}
                 </span>
               </p>
             </div>
