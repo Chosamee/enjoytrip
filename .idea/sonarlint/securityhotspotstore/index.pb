@@ -105,3 +105,17 @@ y
 Ienjoytrip-api/src/main/java/com/ssafy/enjoytrip/service/BoardService.java,0\4\043339eff68e47e11a3fa586a4496a9384a69de3
 t
 Dssafy-vue(login_with_JWT)/src/components/layout/TheHeadingNavbar.vue,7\f\7f676d86a8b1666a4ad48c211b629f184d67e4ed
+
+Oenjoytrip-api/src/main/java/com/ssafy/enjoytrip/controller/BoardController.java,b\6\b6f65d350a2df404bc010eb072d011d6292701d0
+c
+3ssafy-vue(login_with_JWT)/src/views/TheTripView.vue,4\9\4920f76c868a2aa57468d5576e1b3123a916496a
+_
+/ssafy-vue(login_with_JWT)/src/stores/counter.js,d\6\d6a8cbac5b28bf98f2050fa24fc9df39e9b0bc73
+k
+;ssafy-vue(login_with_JWT)/src/components/common/VSelect.vue,c\d\cd03b238e7f1fc3af19ad8d5d1abf3c9e13117e6
+j
+:ssafy-vue(login_with_JWT)/src/components/common/VTable.vue,6\a\6a2fb20fc33dc82d0f62c83534ffaa11e31ad9d8
+m
+=ssafy-vue(login_with_JWT)/src/components/layout/TheFooter.vue,f\0\f06abde7cc4d37edcfd6bf3128219936293c9468
+e
+5ssafy-vue(login_with_JWT)/src/components/KakaoMap.vue,2\a\2a308d3a85add37e595a024f52f3296d8804ed2f

@@ -18,6 +18,6 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     void updateHit(Long articleno);
 
     @Modifying(clearAutomatically = true)
-    @Query("update Member m set m.title=:title and m.content=:content where b.articleno=:articleno")
-    void modifyArticle(Long articleNo, String title, String content);
+    @Query("update Board b set b.title=:title, b.content=:content where b.articleno=:articleno")
+    void modifyArticle(Long articleno, String title, String content);
 }

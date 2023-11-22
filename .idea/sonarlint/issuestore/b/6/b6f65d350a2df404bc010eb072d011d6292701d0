@@ -1,0 +1,15 @@
+
+t
+java:S22930"YReplace the type specification in this constructor call with the diamond operator ("<>").(»Ò‘Ñþÿÿÿÿ
+t
+java:S2293L"YReplace the type specification in this constructor call with the diamond operator ("<>").(žÖƒ½ýÿÿÿÿ
+t
+java:S2293U"YReplace the type specification in this constructor call with the diamond operator ("<>").(žÖƒ½ýÿÿÿÿ
+o
+java:S2293d"YReplace the type specification in this constructor call with the diamond operator ("<>").(ªôð×
+<
+java:S1452'"&Remove usage of generic wildcard type.(±ü²Ü
+<
+java:S14528"&Remove usage of generic wildcard type.(Õïö›
+O
+java:S4719>":Replace Charset.forName() call with StandardCharsets.UTF_8(›Æõr

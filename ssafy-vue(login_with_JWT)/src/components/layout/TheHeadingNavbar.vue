@@ -20,7 +20,7 @@ const logout = () => {
   var token = sessionStorage.getItem("accessToken");
   console.log("토근 ㅇㅇㅇ " + token);
   getUserInfo(token);
-  console.log(userInfo);
+  console.log(userInfo.value);
   userLogout(userInfo.userId);
   changeMenuState();
   console.log(sessionStorage.getItem("accessToken"));

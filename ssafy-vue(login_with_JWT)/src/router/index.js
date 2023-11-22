@@ -5,6 +5,7 @@ import TheElectricChargingStationView from "@/views/TheElectricChargingStationVi
 
 import { storeToRefs } from "pinia";
 import { useMemberStore } from "@/stores/member";
+import TheTripView from "@/views/TheTripView.vue";
 
 const onlyAuthUser = async (to, from, next) => {
   const memberStore = useMemberStore();
@@ -29,7 +30,12 @@ const router = createRouter({
     {
       path: "/",
       name: "main",
-      component: TheMainView,
+      component: TheTripView,
+    },
+    {
+      path: "/trips",
+      name: "trips",
+      component: TheTripView,
     },
     {
       path: "/user",
