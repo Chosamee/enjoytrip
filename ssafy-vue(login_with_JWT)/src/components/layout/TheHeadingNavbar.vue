@@ -14,7 +14,6 @@ const { menuList } = storeToRefs(menuStore);
 const { changeMenuState } = menuStore;
 const { userLogout, getUserInfo } = memberStore;
 
-
 const logout = () => {
   console.log("로그아웃!!!!");
   var token = sessionStorage.getItem("accessToken");
@@ -40,15 +39,11 @@ const logout = () => {
         data-bs-target="#navbarScroll"
         aria-controls="navbarScroll"
         aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul
-          class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
-          style="--bs-scroll-height: 100px"
-        >
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
           <li class="nav-item">
             <a class="nav-link" href="#">마이캠퍼스</a>
           </li>
@@ -59,15 +54,7 @@ const logout = () => {
             <a class="nav-link" href="#">커뮤니티</a>
           </li>
           <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              HELP DESK
-            </a>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> HELP DESK </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">공지사항</a></li>
               <li><a class="dropdown-item" href="#">FAQ</a></li>
@@ -91,24 +78,17 @@ const logout = () => {
           />
           <button class="btn btn-outline-success" type="button">search</button>
         </form> -->
-        <ul
-          class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll"
-          style="--bs-scroll-height: 100px"
-        >
+        <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
           <template v-for="menu in menuList" :key="menu.routeName">
             <template v-if="menu.show">
               <template v-if="menu.routeName === 'user-logout'">
                 <li class="nav-item">
-                  <router-link to="/" @click.prevent="logout" class="nav-link">{{
-                    menu.name
-                  }}</router-link>
+                  <router-link to="/" @click.prevent="logout" class="nav-link">{{ menu.name }}</router-link>
                 </li>
               </template>
               <template v-else>
                 <li class="nav-item">
-                  <router-link :to="{ name: menu.routeName }" class="nav-link">{{
-                    menu.name
-                  }}</router-link>
+                  <router-link :to="{ name: menu.routeName }" class="nav-link">{{ menu.name }}</router-link>
                 </li>
               </template>
             </template>

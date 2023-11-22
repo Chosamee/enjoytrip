@@ -1,8 +1,6 @@
 package com.ssafy.enjoytrip.service;
 
 import java.util.List;
-import javax.persistence.NoResultException;
-
 import com.ssafy.enjoytrip.repository.MemberRepository;
 
 import org.springframework.stereotype.Service;
@@ -27,21 +25,14 @@ public class MemberService {
     }
 
     public Long login(Member member) {
-        try {
-            if (memberRepository.findByEmailAndPassword(member.getEmail(), member.getPassword()).isEmpty())
-                throw new IllegalStateException("이메일 비밀번호 확인");
-        } catch (Exception e) {
-        }
+        if (memberRepository.findByEmailAndPassword(member.getEmail(), member.getPassword()).isEmpty())
+            throw new IllegalStateException("이메일 비밀번호 확인");
         return member.getId();
     }
 
     private void checkDuplicateMember(Member member) {
-        try {
-            if (!memberRepository.findByEmail(member.getEmail()).isEmpty())
-                throw new IllegalStateException("이미 존재하는 회원입니다.");
-        } catch (NoResultException e) {
-
-        }
+        if (!memberRepository.findByEmail(member.getEmail()).isEmpty())
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
     }
 
     public List<Member> findMembers() {

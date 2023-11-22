@@ -25,13 +25,12 @@ const login = async () => {
     getUserInfo(token);
     changeMenuState();
   }
-  router.push({name: "main"});
+  router.push({ name: "main" });
 };
 
 const regist = () => {
-  router.push("/regist");
+  router.push("/user/join");
 };
-
 </script>
 
 <template>
@@ -50,27 +49,14 @@ const regist = () => {
           </div>
           <div class="mb-3 text-start">
             <label for="userid" class="form-label">아이디 : </label>
-            <input
-              type="text"
-              class="form-control"
-              v-model="loginUser.email"
-              placeholder="아이디..."
-            />
+            <input type="text" class="form-control" v-model="loginUser.email" placeholder="아이디..." />
           </div>
           <div class="mb-3 text-start">
             <label for="userpwd" class="form-label">비밀번호 : </label>
-            <input
-              type="password"
-              class="form-control"
-              v-model="loginUser.password"
-              @keyup.enter="login"
-              placeholder="비밀번호..."
-            />
+            <input type="password" class="form-control" v-model="loginUser.password" @keyup.enter="login" placeholder="비밀번호..." />
           </div>
           <div class="col-auto text-center">
-            <button type="button" class="btn btn-outline-primary mb-3" @click="login">
-              로그인
-            </button>
+            <button type="button" class="btn btn-outline-primary mb-3" @click="login">로그인</button>
             <button type="button" class="btn btn-outline-success ms-1 mb-3" @click="regist">회원가입</button>
           </div>
         </form>

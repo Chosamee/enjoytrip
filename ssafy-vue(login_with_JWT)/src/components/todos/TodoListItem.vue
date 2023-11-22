@@ -15,9 +15,7 @@ defineProps({ todo: Object });
       </span>
     </div>
     <div class="col-lg-1">
-      <button type="button" class="btn btn-outline-danger btn-sm" @click="removeTodo(todo.id)">
-        X
-      </button>
+      <button type="button" class="btn btn-outline-danger btn-sm" @click="removeTodo(todo.id)">X</button>
     </div>
   </div>
 </template>

@@ -1,25 +1,29 @@
 <script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { useMemberStore } from '@/stores/member';
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useMemberStore } from "@/stores/member";
 
 const router = useRouter();
 
 const memberStore = useMemberStore();
 
 const { userRegist } = memberStore;
-const registUser = ref ({
+const registUser = ref({
   email: "",
   domain: "",
   password: "",
   name: "",
-})
+});
 const regist = async () => {
-  await userRegist(registUser.value);
+  const loginForm = {
+    email: registUser.value.email + "@" + registUser.value.domain,
+    password: registUser.value.password,
+    name: registUser.value.name,
+  };
+  await userRegist(loginForm);
 
   router.push("/login");
-}
-
+};
 </script>
 
 <template>
@@ -33,7 +37,7 @@ const regist = async () => {
       <div class="col-lg-10 text-start">
         <form>
           <div class="mb-3">
-            <label for="emailid" class="form-label">이메일 : </label>
+            <label for="email" class="form-label">이메일 : </label>
             <div class="input-group">
               <input type="text" class="form-control" v-model="registUser.email" placeholder="이메일아이디" />
               <span class="input-group-text">@</span>
@@ -50,7 +54,7 @@ const regist = async () => {
             <label for="username" class="form-label">이름 : </label>
             <input type="text" class="form-control" v-model="registUser.name" placeholder="이름..." />
           </div>
-<!--          <div class="mb-3">
+          <!--          <div class="mb-3">
             <label for="userid" class="form-label">아이디 : </label>
             <input type="text" class="form-control" v-model="registUser.email" placeholder="아이디..." />
           </div>-->
@@ -65,7 +69,7 @@ const regist = async () => {
 
           <div class="col-auto text-center">
             <button type="button" class="btn btn-outline-primary mb-3" @click="regist">회원가입</button>
-<!--            <button type="button" class="btn btn-outline-success ms-1 mb-3">초기화</button>-->
+            <!--            <button type="button" class="btn btn-outline-success ms-1 mb-3">초기화</button>-->
           </div>
         </form>
       </div>
