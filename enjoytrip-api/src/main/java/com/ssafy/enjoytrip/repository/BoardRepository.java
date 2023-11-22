@@ -2,10 +2,12 @@ package com.ssafy.enjoytrip.repository;
 
 import com.ssafy.enjoytrip.domain.Board;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface BoardRepository extends JpaRepository<Board, Long> {
@@ -20,4 +22,6 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     @Modifying(clearAutomatically = true)
     @Query("update Board b set b.title=:title, b.content=:content where b.articleno=:articleno")
     void modifyArticle(Long articleno, String title, String content);
+
+    List<Board> findByArticlenoGreaterThan(Long articleno, Pageable pageable);
 }
