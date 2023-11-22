@@ -5,13 +5,13 @@ var map;
 const positions = ref([]);
 const markers = ref([]);
 
-const props = defineProps({ stations: Array, selectStation: Object });
+const props = defineProps({ trips: Array, selectedTrip: Object });
 
 watch(
-  () => props.selectStation.value,
+  () => props.selectedTrip.value,
   () => {
     // 이동할 위도 경도 위치를 생성합니다
-    var moveLatLon = new kakao.maps.LatLng(props.selectStation.lat, props.selectStation.lng);
+    var moveLatLon = new kakao.maps.LatLng(props.selectedTrip.value.mapy, props.selectedTrip.value.mapx);
 
     // 지도 중심을 부드럽게 이동시킵니다
     // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
@@ -35,13 +35,13 @@ onMounted(() => {
 });
 
 watch(
-  () => props.stations.value,
+  () => props.trips.value,
   () => {
     positions.value = [];
-    props.stations.forEach((station) => {
+    props.trips.forEach((trip) => {
       let obj = {};
-      obj.latlng = new kakao.maps.LatLng(station.lat, station.lng);
-      obj.title = station.statNm;
+      obj.latlng = new kakao.maps.LatLng(trip.mapy, trip.mapx);
+      obj.title = trip.title;
 
       positions.value.push(obj);
     });

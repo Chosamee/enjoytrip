@@ -13,14 +13,14 @@
     <form class="d-flex my-3" onsubmit="return false;" role="search">
       <!-- 지역 선택 -->
       <select v-model="searchArea" id="search-area" class="form-select me-2">
-        <option value="0" selected>검색 할 지역 선택</option>
+        <option value="0">검색 할 지역 선택</option>
         <option v-for="area in areas" :key="area.code" :value="area.code">
           {{ area.name }}
         </option>
       </select>
       <!-- 유형 선택 -->
       <select v-model="searchContentId" id="search-content-id" class="form-select me-2">
-        <option value="0" selected>관광지 유형</option>
+        <option value="0">관광지 유형</option>
         <option value="12">관광지</option>
         <option value="14">문화시설</option>
         <option value="15">축제공연행사</option>
@@ -45,7 +45,7 @@
     <!-- 관광지 검색 end -->
 
     <!-- kakao map start -->
-    <KakaoMap />
+    <VKakaoMap :trips="trips" :selectedTrip="selectedTrip" />
     <!-- kakao map end -->
 
     <div class="row">
@@ -62,12 +62,12 @@
           <tr
             v-for="(trip, tripIndex) in trips"
             :key="trip.title"
-            :onclick="moveCenter(trip.mapy, trip.mapx)">
+            @click="selectedTrip = trip">
             <td><img :src="trip.firstimage" width="100" /></td>
             <td>{{ trip.title }}</td>
             <td>{{ trip.addr1 }} {{ trip.addr2 }}</td>
             <td>
-              <button class="btn btn-outline-secondary" :onclick="addTravel(tripIndex)">
+              <button class="btn btn-outline-secondary">
                 추가
               </button>
             </td>
@@ -82,10 +82,13 @@
 import { ref, onMounted } from "vue";
 import axios from "axios";
 import KakaoMap from "@/components/KakaoMap.vue";
+import VKakaoMap from "@/components/common/VKakaoMap.vue";
 // import kakao from "//dapi.kakao.com/v2/maps/sdk.js?appkey=63cd578ef6468c9ce78530d95cb5de9b&libraries=services,clusterer,drawing";
 const { VITE_OPEN_API_SERVICE_KEY } = import.meta.env;
 
 const baseUrl = "https://apis.data.go.kr/B551011/KorService1/";
+
+const selectedTrip = ref({});
 
 onMounted(() => {
   makeOption();
@@ -135,8 +138,8 @@ const makeOption = () => {
 };
 
 // 검색
-const searchArea = ref([]);
-const searchContentId = ref([]);
+const searchArea = ref("0");
+const searchContentId = ref("0");
 const searchKeyword = ref([]);
 
 const searchTrips = () => {
@@ -180,7 +183,7 @@ const searchTrips = () => {
   }
 };
 
-var positions; // marker 배열.
+/*var positions; // marker 배열.
 function makeList(data) {
   let markerInfo = {
     title: area.title,
@@ -199,7 +202,7 @@ function makeList(data) {
                       </div>
                     </div>
                   </div>`,
-    /*`<div class=""><h style="vertical-align: middle">${area.title}</h><img src="${area.firstimage}" width="73" height="70"></div>`*/
+    /!*`<div class=""><h style="vertical-align: middle">${area.title}</h><img src="${area.firstimage}" width="73" height="70"></div>`*!/
   };
   positions.push(markerInfo);
   displayMarker();
@@ -256,6 +259,6 @@ var pollContent = "";
 function addTravel(cnt) {
   // pollContent += `<div>\${trips[cnt].title}  <button class="btn btn-outline-danger">삭제</button></div>`;
   // document.querySelector("#poll-area").innerHTML = pollContent;
-}
+}*/
 </script>
 <style></style>

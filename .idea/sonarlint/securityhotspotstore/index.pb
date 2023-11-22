@@ -93,10 +93,6 @@ v
 Fssafy-vue(login_with_JWT)/src/views/TheElectricChargingStationView.vue,2\3\23c00cfb270b0925ddc174510035e52dbe459f33
 „
 Tenjoytrip-api/src/main/java/com/ssafy/enjoytrip/exception/UnAuthorizedException.java,7\5\75d7eb4bde1385b9bd6561d759cb70eaa4b5bc81
-€
-Penjoytrip-api/src/main/java/com/ssafy/enjoytrip/repository/sampleRepository.java,f\3\f39dec6f401f1a9544164847ebafa983dfb6f717
-€
-Penjoytrip-api/src/main/java/com/ssafy/enjoytrip/repository/SampleRepository.java,8\4\84b15992f2f84b1e667544f7712b61f1ee6db34c
 r
 Benjoytrip-api/src/main/java/com/ssafy/enjoytrip/domain/Member.java,d\9\d99caebb3f1dd775c1041080fdb06e3f243fb90a
 H
@@ -119,3 +115,5 @@ m
 =ssafy-vue(login_with_JWT)/src/components/layout/TheFooter.vue,f\0\f06abde7cc4d37edcfd6bf3128219936293c9468
 e
 5ssafy-vue(login_with_JWT)/src/components/KakaoMap.vue,2\a\2a308d3a85add37e595a024f52f3296d8804ed2f
+m
+=ssafy-vue(login_with_JWT)/src/components/common/VKakaoMap.vue,b\8\b8fe9574321ab90a938f2fe8bc35a13348624081
