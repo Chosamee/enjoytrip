@@ -1,18 +1,23 @@
 package com.ssafy.enjoytrip.repository;
 
-import javax.persistence.EntityManager;
-
-import org.springframework.stereotype.Repository;
-
 import com.ssafy.enjoytrip.domain.Board;
-import lombok.RequiredArgsConstructor;
 
-@Repository
-@RequiredArgsConstructor
-public class BoardRepository {
-    private final EntityManager em;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 
-    public void save(Board board) {
-        em.persist(board);
-    }
+import java.util.Optional;
+
+public interface BoardRepository extends JpaRepository<Board, Long> {
+    Optional<Board> findByEmail(String email);
+
+    Optional<Board> findByArticleno(Long articleno);
+
+    @Modifying(clearAutomatically = true)
+    @Query("update Board b set b.hit=b.hit+1 where b.articleno=:articleno")
+    void updateHit(Long articleno);
+
+    @Modifying(clearAutomatically = true)
+    @Query("update Member m set m.title=:title and m.content=:content where b.articleno=:articleno")
+    void modifyArticle(Long articleNo, String title, String content);
 }

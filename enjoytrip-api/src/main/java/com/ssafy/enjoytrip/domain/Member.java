@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import lombok.*;
 
 @Entity
@@ -23,4 +25,6 @@ public class Member {
     private String password;
     private String name;
     private String token;
+    @CreatedDate
+    private String createdDate;
 }
