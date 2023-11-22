@@ -62,7 +62,7 @@
           <tr
             v-for="(trip, tripIndex) in trips"
             :key="trip.title"
-            @click="selectedTrip = trip">
+            @click="viewTrip(trip)">
             <td><img :src="trip.firstimage" width="100" /></td>
             <td>{{ trip.title }}</td>
             <td>{{ trip.addr1 }} {{ trip.addr2 }}</td>
@@ -97,6 +97,10 @@ onMounted(() => {
 
 const trips = ref([]);
 const areas = ref([]);
+
+const viewTrip = (trip) => {
+  selectedTrip.value = trip;
+}
 
 const getTripLists = () => {
   axios

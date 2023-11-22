@@ -11,6 +11,7 @@ watch(
   () => props.selectedTrip.value,
   () => {
     // 이동할 위도 경도 위치를 생성합니다
+    console.log("pos: " + props.selectedTrip.value.mapy + ", " + props.selectedTrip.value.mapx);
     var moveLatLon = new kakao.maps.LatLng(props.selectedTrip.value.mapy, props.selectedTrip.value.mapx);
 
     // 지도 중심을 부드럽게 이동시킵니다
