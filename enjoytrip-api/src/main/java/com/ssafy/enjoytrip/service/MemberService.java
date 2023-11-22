@@ -28,17 +28,17 @@ public class MemberService {
 
     public Long login(Member member) {
         try {
-            memberRepository.findByEmailAndPassword(member.getEmail(), member.getPassword());
+            if (memberRepository.findByEmailAndPassword(member.getEmail(), member.getPassword()).isEmpty())
+                throw new IllegalStateException("이메일 비밀번호 확인");
         } catch (Exception e) {
-            throw new IllegalStateException("이메일 비밀번호 확인");
         }
         return member.getId();
     }
 
     private void checkDuplicateMember(Member member) {
         try {
-            memberRepository.findByEmail(member.getEmail());
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
+            if (!memberRepository.findByEmail(member.getEmail()).isEmpty())
+                throw new IllegalStateException("이미 존재하는 회원입니다.");
         } catch (NoResultException e) {
 
         }
