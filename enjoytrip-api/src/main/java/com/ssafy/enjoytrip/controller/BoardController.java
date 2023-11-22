@@ -8,7 +8,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.enjoytrip.domain.Board;
 import com.ssafy.enjoytrip.dto.BoardDto;
@@ -31,13 +38,12 @@ public class BoardController {
     @PostMapping
     public ResponseEntity<?> writeArticle(
             @RequestBody @ApiParam(value = "게시글 정보", required = true) BoardDto boardDto) {
-        log.info("writeArticle boardDto - {}", boardDto.toString());
+        log.info("writeArticle boardDto - {}", boardDto);
         try {
             Board board = new Board();
             board.setTitle(boardDto.getTitle());
             board.setContent(boardDto.getContent());
             board.setEmail(boardDto.getEmail());
-            System.out.println(board.toString());
             boardService.writeArticle(board);
             return new ResponseEntity<Void>(HttpStatus.CREATED);
         } catch (Exception e) {
@@ -51,7 +57,7 @@ public class BoardController {
             @RequestParam @ApiParam(value = "게시글을 얻기위한 부가정보.", required = true) Map<String, String> map) {
         log.info("listArticle map - {}", map);
         try {
-            BoardListDto boardListDto = boardService.listArticle();
+            BoardListDto boardListDto = boardService.listArticle(map);
             HttpHeaders header = new HttpHeaders();
             header.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
             return ResponseEntity.ok().headers(header).body(boardListDto);

@@ -1,10 +1,14 @@
 package com.ssafy.enjoytrip.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.ssafy.enjoytrip.domain.Board;
@@ -24,9 +28,17 @@ public class BoardService {
         boardRepository.saveAndFlush(board);
     }
 
-    public BoardListDto listArticle() {
+    public BoardListDto listArticle(Map<String, String> map) {
         BoardListDto boardListDto = new BoardListDto();
-        List<Board> boards = boardRepository.findAll();
+        int currentPage = Integer.parseInt(map.get("pgno") == null ? "1" : map.get("pgno"));
+        int sizePerPage = Integer.parseInt(map.get("spp") == null ? "20" : map.get("spp"));
+        // int start = currentPage * sizePerPage - sizePerPage;
+
+        Pageable paging = PageRequest.of(currentPage, sizePerPage, Sort.Direction.DESC, "articleno");
+        List<Board> boards = boardRepository.findByArticlenoGreaterThan(0L, paging);
+        int totalArticleCount = boards.size();
+        int totalPageCount = (totalArticleCount - 1) / sizePerPage + 1;
+
         List<BoardDto> boardDtos = boards.stream()
                 .map(o -> {
                     BoardDto boardDto = new BoardDto();
@@ -38,6 +50,8 @@ public class BoardService {
                     return boardDto;
                 }).collect(Collectors.toList());
         boardListDto.setArticles(boardDtos);
+        boardListDto.setCurrentPage(currentPage);
+        boardListDto.setTotalPageCount(totalPageCount);
         return boardListDto;
     }
 
