@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ssafy.enjoytrip.domain.Board;
 import com.ssafy.enjoytrip.dto.BoardDto;
 import com.ssafy.enjoytrip.dto.BoardListDto;
-import com.ssafy.enjoytrip.service.BoardService;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

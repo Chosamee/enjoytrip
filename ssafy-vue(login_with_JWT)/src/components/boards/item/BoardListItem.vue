@@ -4,16 +4,16 @@ defineProps({ article: Object });
 
 <template>
   <tr class="text-center">
-    <th scope="row">{{ article.articleNo }}</th>
+    <th scope="row">{{ article.articleno }}</th>
     <td class="text-start">
       <router-link
-        :to="{ name: 'article-view', params: { articleno: article.articleNo } }"
+        :to="{ name: 'article-view', params: { articleno: article.articleno } }"
         class="article-title link-dark"
       >
         {{ article.title }}
       </router-link>
     </td>
-<!--    <td>{{ article.userName }}</td>-->
+    <td>{{ article.email }}</td>
     <td>{{ article.hit }}</td>
     <td>{{ article.createdDate }}</td>
   </tr>

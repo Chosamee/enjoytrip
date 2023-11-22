@@ -39,6 +39,7 @@ const getArticleList = () => {
   listArticle(
     param.value,
     ({ data }) => {
+      console.log(data);
       articles.value = data.articles;
       currentPage.value = data.currentPage;
       totalPage.value = data.totalPageCount;
@@ -103,7 +104,7 @@ const moveWrite = () => {
           <tbody>
             <BoardListItem
               v-for="article in articles"
-              :key="article.articleNo"
+              :key="article.articleno"
               :article="article"
             ></BoardListItem>
           </tbody>
