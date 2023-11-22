@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/board")
+@RequestMapping("/api/board")
 @Slf4j
 public class BoardController {
     private final BoardService boardService;
@@ -44,6 +44,7 @@ public class BoardController {
             board.setTitle(boardDto.getTitle());
             board.setContent(boardDto.getContent());
             board.setEmail(boardDto.getEmail());
+            System.out.println(board.toString());
             boardService.writeArticle(board);
             return new ResponseEntity<Void>(HttpStatus.CREATED);
         } catch (Exception e) {
