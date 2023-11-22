@@ -3,18 +3,11 @@ package com.ssafy.enjoytrip.util;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.ssafy.enjoytrip.exception.UnAuthorizedException;
 import com.auth0.jwt.JWT;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
-import java.util.Map;
-import java.util.Optional;
 
 @Component
 @Slf4j
@@ -49,12 +42,12 @@ public class JWTUtil {
 	// jwt 토큰의 구성 : header + payload + signature
 	private String create(String userId, String subject, long expireTime) {
 		Date now = new Date();
-		return JWT.create()    // JWT 토큰을 생성하는 빌더 반환
+		return JWT.create() // JWT 토큰을 생성하는 빌더 반환
 				.withSubject(subject) // JWT의 subject 지정 -> accessToken
 				.withExpiresAt(new Date(now.getTime() + expireTime)) // 토큰 만료 시간 설정
-				//클레임으로 uid, email 사용.
-				//추가적으로 식별자나, 이름 등의 정보를 더 추가하셔도 됩니다.
-				//추가하실 경우 .withClaim(클래임 이름, 클래임 값) 으로 설정해주시면 됩니다
+				// 클레임으로 uid, email 사용.
+				// 추가적으로 식별자나, 이름 등의 정보를 더 추가하셔도 됩니다.
+				// 추가하실 경우 .withClaim(클래임 이름, 클래임 값) 으로 설정해주시면 됩니다
 				.withClaim("email", userId)
 				.sign(Algorithm.HMAC512(secretKey)); // HMAC512 알고리즘 사용, application-jwt.yml에서 지정한 secret 키로 암호화
 

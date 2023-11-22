@@ -1,14 +1,27 @@
 
 {
-java:S2293,"YReplace the type specification in this constructor call with the diamond operator ("<>").(»Ò‘Ñşÿÿÿÿ8àÿÜ¾1
+java:S22931"YReplace the type specification in this constructor call with the diamond operator ("<>").(»Ò‘Ñşÿÿÿÿ8¢øØƒ¿1
 {
-java:S22936"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¹óùÿÿÿÿ8âÿÜ¾1
+java:S2293;"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¹óùÿÿÿÿ8£øØƒ¿1
 v
-java:S2293L"YReplace the type specification in this constructor call with the diamond operator ("<>").(İá‡8âÿÜ¾1
+java:S2293Q"YReplace the type specification in this constructor call with the diamond operator ("<>").(İá‡8âÿÜ¾1
 v
-java:S2293Q"YReplace the type specification in this constructor call with the diamond operator ("<>").(ªôğ×8ãÿÜ¾1
+java:S2293b"YReplace the type specification in this constructor call with the diamond operator ("<>").(İá‡8£øØƒ¿1
+v
+java:S2293z"YReplace the type specification in this constructor call with the diamond operator ("<>").(İá‡8£øØƒ¿1
+w
+java:S2293˜"YReplace the type specification in this constructor call with the diamond operator ("<>").(İá‡8¤øØƒ¿1
+w
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ªôğ×8ãÿÜ¾1
 H
-java:S1452""&Remove usage of generic wildcard type.(‰•Î¨øÿÿÿÿ8š€‘Ü¾1
+java:S1452'"&Remove usage of generic wildcard type.(‰•Î¨øÿÿÿÿ8¶øØƒ¿1
 C
-java:S14523"&Remove usage of generic wildcard type.(¹ğÜÅ8§€‘Ü¾1
-L	java:S106@"+Replace this use of System.out by a logger.(ˆË”†üÿÿÿÿ8ÌâŞ¾1
+java:S14528"&Remove usage of generic wildcard type.(¹ğÜÅ8½øØƒ¿1
+L	java:S106E"+Replace this use of System.out by a logger.(ˆË”†üÿÿÿÿ8ÁøØƒ¿1
+C
+java:S1452V"&Remove usage of generic wildcard type.(şÈì±8ÃøØƒ¿1
+C
+java:S1452h"&Remove usage of generic wildcard type.(ëá¦ô8ÅøØƒ¿1
+W
+java:S1854„":Remove this useless assignment to local variable "status".(£Ûëa8ËøØƒ¿1
+^	java:S125‚"<This block of commented-out lines of code should be removed.(»­Åîıÿÿÿÿ8ÌøØƒ¿1

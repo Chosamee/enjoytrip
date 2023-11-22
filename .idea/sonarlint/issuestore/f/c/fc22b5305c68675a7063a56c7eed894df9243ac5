@@ -1,5 +1,8 @@
 
-v
-java:S2293L"YReplace the type specification in this constructor call with the diamond operator ("<>").(«üÎŒ8¤Šß¾1
-J	java:S108.")Either remove or fill this block of code.(ØçÔ·ÿÿÿÿÿ8³Šß¾1
-X	java:S125<"<This block of commented-out lines of code should be removed.(¾Îëà8“– ß¾1
+r
+java:S36558"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÿŠºáøÿÿÿÿ8®‰„¿1
+r
+java:S36554"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(Ğ¹å„øÿÿÿÿ8®‰„¿1
+r
+java:S3655@"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(“±¤ùÿÿÿÿ8®‰„¿1
+J	java:S108*")Either remove or fill this block of code.(ØçÔ·ÿÿÿÿÿ8¸‰„¿1
