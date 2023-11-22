@@ -34,7 +34,7 @@ public class BoardService {
         int sizePerPage = Integer.parseInt(map.get("spp") == null ? "20" : map.get("spp"));
         // int start = currentPage * sizePerPage - sizePerPage;
 
-        Pageable paging = PageRequest.of(currentPage, sizePerPage, Sort.Direction.DESC, "articleno");
+        Pageable paging = PageRequest.of(currentPage - 1, sizePerPage, Sort.Direction.DESC, "articleno");
         List<Board> boards = boardRepository.findByArticlenoGreaterThan(0L, paging);
         int totalArticleCount = boards.size();
         int totalPageCount = (totalArticleCount - 1) / sizePerPage + 1;
@@ -47,6 +47,7 @@ public class BoardService {
                     boardDto.setHit(o.getHit());
                     boardDto.setTitle(o.getTitle());
                     boardDto.setArticleno(o.getArticleno());
+                    boardDto.setCreatedDate(o.getCreatedDate());
                     return boardDto;
                 }).collect(Collectors.toList());
         boardListDto.setArticles(boardDtos);
@@ -55,6 +56,7 @@ public class BoardService {
         return boardListDto;
     }
 
+    @Transactional
     public void updateHit(Long articleno) {
         boardRepository.updateHit(articleno);
     }
@@ -67,9 +69,11 @@ public class BoardService {
         boardDto.setTitle(board.getTitle());
         boardDto.setHit(board.getHit());
         boardDto.setEmail(board.getEmail());
+        boardDto.setCreatedDate(board.getCreatedDate());
         return boardDto;
     }
 
+    @Transactional
     public void modifyArticle(BoardDto boardDto) {
         Board board = Board.builder()
                 .articleno(boardDto.getArticleno())
