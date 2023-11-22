@@ -47,12 +47,14 @@ export const useMemberStore = defineStore(
         (response) => {
           if (response.status === httpStatusCode.CREATE) {
             console.log("회원가입 성공");
+            router.push({ name: "user-login" });
           } else {
             console.log("회원가입 실패");
           }
         },
         (error) => {
           console.error(error);
+          alert("회원가입에 실패하였습니다.");
         }
       );
     };

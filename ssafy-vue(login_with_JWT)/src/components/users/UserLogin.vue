@@ -21,15 +21,17 @@ const loginUser = ref({
 const login = async () => {
   await userLogin(loginUser.value);
   let token = sessionStorage.getItem("accessToken");
-  if (isLogin) {
+  if (isLogin.value) {
     getUserInfo(token);
     changeMenuState();
+    router.push({ name: "main" });
+  } else {
+    router.push({name: "user-login"})
   }
-  router.push({ name: "main" });
 };
 
 const regist = () => {
-  router.push("/user/join");
+  router.push({name: "user-join"});
 };
 </script>
 

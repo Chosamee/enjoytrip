@@ -1,15 +1,16 @@
 
 t
-java:S22930"YReplace the type specification in this constructor call with the diamond operator ("<>").(»Ò‘Ñþÿÿÿÿ
+java:S22931"YReplace the type specification in this constructor call with the diamond operator ("<>").(»Ò‘Ñþÿÿÿÿ
 t
-java:S2293L"YReplace the type specification in this constructor call with the diamond operator ("<>").(žÖƒ½ýÿÿÿÿ
+java:S2293M"YReplace the type specification in this constructor call with the diamond operator ("<>").(žÖƒ½ýÿÿÿÿ
 t
-java:S2293U"YReplace the type specification in this constructor call with the diamond operator ("<>").(žÖƒ½ýÿÿÿÿ
+java:S2293V"YReplace the type specification in this constructor call with the diamond operator ("<>").(žÖƒ½ýÿÿÿÿ
 o
-java:S2293d"YReplace the type specification in this constructor call with the diamond operator ("<>").(ªôð×
+java:S2293e"YReplace the type specification in this constructor call with the diamond operator ("<>").(ªôð×
 <
 java:S1452'"&Remove usage of generic wildcard type.(±ü²Ü
+L	java:S106/"+Replace this use of System.out by a logger.(¬ðßÂÿÿÿÿÿ8 ðÚ±¿1
 <
-java:S14528"&Remove usage of generic wildcard type.(Õïö›
+java:S14529"&Remove usage of generic wildcard type.(Õïö›
 O
-java:S4719>":Replace Charset.forName() call with StandardCharsets.UTF_8(›Æõr
+java:S4719?":Replace Charset.forName() call with StandardCharsets.UTF_8(›Æõr

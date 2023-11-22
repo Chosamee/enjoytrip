@@ -1,7 +1,6 @@
 <template>
   <div class="container text-center mt-3">
     <div class="alert alert-info" role="alert">여행지 검색</div>
-    <div style="height: 70px"></div>
     <div
       class="shadow-sm p-4 mb-4 bg-white display-6 mt-3 text-center fw-bold"
       role="alert"
@@ -43,7 +42,10 @@
     <!-- 관광지 검색 end -->
 
     <!-- kakao map start -->
-    <VKakaoMap :trips="trips" :selectedTrip="selectedTrip" />
+    <div style="width:100%;">
+      <VKakaoMap :trips="trips" :selectedTrip="selectedTrip" style="margin: auto"/>
+    </div>
+
     <!-- kakao map end -->
 
     <div class="row">

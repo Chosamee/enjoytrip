@@ -11,13 +11,12 @@ const props = defineProps({ type: String });
 const isUseId = ref(false);
 
 const article = ref({
-  articleNo: 0,
-  subject: "",
+  articleno: 0,
+  title: "",
   content: "",
-  userId: "",
-  userName: "",
+  email: "",
   hit: 0,
-  registerTime: "",
+  createdDate: "",
 });
 
 if (props.type === "modify") {
@@ -38,7 +37,7 @@ if (props.type === "modify") {
 const subjectErrMsg = ref("");
 const contentErrMsg = ref("");
 watch(
-  () => article.value.subject,
+  () => article.value.title,
   (value) => {
     let len = value.length;
     if (len == 0 || len > 30) {
@@ -112,14 +111,14 @@ function moveList() {
       <input
         type="text"
         class="form-control"
-        v-model="article.userId"
+        v-model="article.email"
         :disabled="isUseId"
         placeholder="작성자ID..."
       />
     </div>
     <div class="mb-3">
       <label for="subject" class="form-label">제목 : </label>
-      <input type="text" class="form-control" v-model="article.subject" placeholder="제목..." />
+      <input type="text" class="form-control" v-model="article.title" placeholder="제목..." />
     </div>
     <div class="mb-3">
       <label for="content" class="form-label">내용 : </label>

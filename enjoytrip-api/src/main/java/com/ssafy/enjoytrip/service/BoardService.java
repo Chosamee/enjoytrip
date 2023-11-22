@@ -21,7 +21,7 @@ public class BoardService {
 
     @Transactional
     public void writeArticle(Board board) {
-        boardRepository.save(board);
+        boardRepository.saveAndFlush(board);
     }
 
     public BoardListDto listArticle() {

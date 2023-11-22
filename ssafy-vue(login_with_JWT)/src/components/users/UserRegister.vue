@@ -12,6 +12,7 @@ const registUser = ref({
   email: "",
   domain: "",
   password: "",
+  passwordCheck: "",
   name: "",
 });
 const regist = async () => {
@@ -21,8 +22,6 @@ const regist = async () => {
     name: registUser.value.name,
   };
   await userRegist(loginForm);
-
-  router.push("/login");
 };
 </script>
 
@@ -39,7 +38,7 @@ const regist = async () => {
           <div class="mb-3">
             <label for="email" class="form-label">이메일 : </label>
             <div class="input-group">
-              <input type="text" class="form-control" v-model="registUser.email" placeholder="이메일아이디" />
+              <input type="text" class="form-control" v-model="registUser.email" placeholder="이메일아이디"/>
               <span class="input-group-text">@</span>
               <select class="form-select" aria-label="이메일 도메인 선택" v-model="registUser.domain">
                 <option selected>선택</option>
@@ -64,7 +63,7 @@ const regist = async () => {
           </div>
           <div class="mb-3">
             <label for="pwdcheck" class="form-label">비밀번호확인 : </label>
-            <input type="text" class="form-control" id="pwdcheck" placeholder="비밀번호확인..." />
+            <input type="text" class="form-control" v-model="registUser.passwordCheck" id="pwdcheck" placeholder="비밀번호확인..." />
           </div>
 
           <div class="col-auto text-center">

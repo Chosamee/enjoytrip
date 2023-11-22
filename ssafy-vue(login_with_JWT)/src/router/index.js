@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import TheMainView from "../views/TheMainView.vue";
-import TheElectricChargingStationView from "@/views/TheElectricChargingStationView.vue";
 // import TheBoardView from "../views/TheBoardView.vue";
 
 import { storeToRefs } from "pinia";
@@ -99,17 +97,6 @@ const router = createRouter({
           component: () => import("@/components/boards/BoardModify.vue"),
         },
       ],
-    },
-    {
-      path: "/estations",
-      name: "estations",
-      component: TheElectricChargingStationView,
-    },
-    {
-      path: "/todos",
-      name: "todos",
-      beforeEnter: onlyAuthUser,
-      component: () => import("@/views/TheTodoView.vue"),
     },
   ],
 });

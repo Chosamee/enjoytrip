@@ -16,8 +16,8 @@ async function tokenRegeneration(user, success, fail) {
     await local.post(`/member/refresh`, user).then(success).catch(fail);
 }
 
-async function logout(userid, success, fail) {
-    await local.get(`/member/logout/${userid}`).then(success).catch(fail);
+async function logout(email, success, fail) {
+    await local.get(`/member/logout/${email}`).then(success).catch(fail);
 }
 
 async function userRegistConfirm(param, success, fail) {

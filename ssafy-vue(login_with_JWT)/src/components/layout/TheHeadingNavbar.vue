@@ -2,9 +2,10 @@
 import { useMenuStore } from "@/stores/menu";
 import { storeToRefs } from "pinia";
 import { useMemberStore } from "@/stores/member";
+import { useRouter } from "vue-router";
 
 const menuStore = useMenuStore();
-
+const router = useRouter();
 const memberStore = useMemberStore();
 
 // 반응형을 유지하면서 스토어에서 속성을 추출하려면, storeToRefs()를 사용
@@ -13,16 +14,15 @@ const { userInfo } = storeToRefs(memberStore);
 const { menuList } = storeToRefs(menuStore);
 const { changeMenuState } = menuStore;
 const { userLogout, getUserInfo } = memberStore;
+const { isLogin } = storeToRefs(memberStore);
 
-const logout = () => {
-  console.log("로그아웃!!!!");
-  var token = sessionStorage.getItem("accessToken");
-  console.log("토근 ㅇㅇㅇ " + token);
-  getUserInfo(token);
-  console.log(userInfo.value);
-  userLogout(userInfo.userId);
-  changeMenuState();
-  console.log(sessionStorage.getItem("accessToken"));
+const logout = async () => {
+  console.log(userInfo.value.email);
+  await userLogout(userInfo.value.email);
+  if (!isLogin.value) {
+    changeMenuState();
+    router.push({name: "main"});
+  }
 };
 </script>
 

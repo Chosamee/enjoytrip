@@ -22,7 +22,7 @@ import lombok.*;
 public class Board {
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "articleno")
     private Long articleno;
     private String email;
     private String title;

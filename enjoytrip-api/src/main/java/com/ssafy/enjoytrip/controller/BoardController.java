@@ -8,13 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.ssafy.enjoytrip.domain.Board;
 import com.ssafy.enjoytrip.dto.BoardDto;
@@ -23,13 +17,12 @@ import com.ssafy.enjoytrip.service.BoardService;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/board")
+@RequestMapping("/api/board")
 @Slf4j
 public class BoardController {
     private final BoardService boardService;
@@ -38,12 +31,13 @@ public class BoardController {
     @PostMapping
     public ResponseEntity<?> writeArticle(
             @RequestBody @ApiParam(value = "게시글 정보", required = true) BoardDto boardDto) {
-        log.info("writeArticle boardDto - {}", boardDto);
+        log.info("writeArticle boardDto - {}", boardDto.toString());
         try {
             Board board = new Board();
             board.setTitle(boardDto.getTitle());
             board.setContent(boardDto.getContent());
             board.setEmail(boardDto.getEmail());
+            System.out.println(board.toString());
             boardService.writeArticle(board);
             return new ResponseEntity<Void>(HttpStatus.CREATED);
         } catch (Exception e) {
