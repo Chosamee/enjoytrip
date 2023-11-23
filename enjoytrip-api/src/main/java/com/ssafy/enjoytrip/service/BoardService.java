@@ -24,7 +24,12 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Transactional
-    public void writeArticle(Board board) {
+    public void writeArticle(BoardDto boardDto) {
+        Board board = Board.builder()
+                .title(boardDto.getTitle())
+                .content(boardDto.getContent())
+                .email(boardDto.getEmail())
+                .build();
         boardRepository.saveAndFlush(board);
     }
 
