@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/SSAFY/IdeaProjects/enjoytrip/enjoytrip-api/src/main/java/com/ssafy/enjoytrip</OriginalElement>
+  <nodes>
+    <node x="69.5" y="656.7606318347509">com.ssafy.enjoytrip.service.BoardService</node>
+    <node x="476.0" y="530.3888213851762">com.ssafy.enjoytrip.controller.BoardController</node>
+    <node x="-219.0" y="656.7606318347509">com.ssafy.enjoytrip.dto.BoardDto</node>
+    <node x="29.0" y="427.76063183475077">com.ssafy.enjoytrip.repository.BoardRepository</node>
+    <node x="416.56196840826215" y="831.5577156743623">com.ssafy.enjoytrip.domain.Board</node>
+    <node x="106.5" y="942.7606318347512">com.ssafy.enjoytrip.dto.BoardListDto</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.ssafy.enjoytrip.service.BoardService" target="com.ssafy.enjoytrip.dto.BoardDto" relationship="CREATE">
+      <point x="-163.5" y="-0.0" />
+      <point x="-107.0" y="770.7606318347509" />
+      <point x="0.0" y="-268.0" />
+    </edge>
+    <edge source="com.ssafy.enjoytrip.service.BoardService" target="com.ssafy.enjoytrip.dto.BoardListDto" relationship="CREATE">
+      <point x="0.0" y="114.0" />
+      <point x="233.0" y="969.7606318347509" />
+      <point x="233.0" y="969.7606318347509" />
+      <point x="0.0" y="-156.0" />
+    </edge>
+    <edge source="com.ssafy.enjoytrip.dto.BoardListDto" target="com.ssafy.enjoytrip.dto.BoardDto" relationship="TO_MANY">
+      <point x="-126.5" y="-0.0" />
+      <point x="55.75" y="1098.7606318347512" />
+      <point x="55.75" y="924.7606318347509" />
+      <point x="112.0" y="-0.0" />
+    </edge>
+    <edge source="com.ssafy.enjoytrip.controller.BoardController" target="com.ssafy.enjoytrip.service.BoardService" relationship="TO_ONE">
+      <point x="-197.0" y="-0.0" />
+      <point x="436.25" y="672.3888213851762" />
+      <point x="436.25" y="770.7606318347509" />
+      <point x="163.5" y="-0.0" />
+    </edge>
+    <edge source="com.ssafy.enjoytrip.service.BoardService" target="com.ssafy.enjoytrip.repository.BoardRepository" relationship="TO_ONE">
+      <point x="0.0" y="-114.0" />
+      <point x="0.0" y="85.5" />
+    </edge>
+  </edges>
+  <settings layout="직교 그룹" zoom="0.9352272727272728" showDependencies="true" x="294.5394896719323" y="834.6609963547995" />
+  <SelectedNodes>
+    <node>com.ssafy.enjoytrip.controller.BoardController</node>
+    <node>com.ssafy.enjoytrip.dto.BoardDto</node>
+    <node>com.ssafy.enjoytrip.domain.Board</node>
+    <node>com.ssafy.enjoytrip.repository.BoardRepository</node>
+    <node>com.ssafy.enjoytrip.service.BoardService</node>
+    <node>com.ssafy.enjoytrip.dto.BoardListDto</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>메서드</Category>
+    <Category>필드</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

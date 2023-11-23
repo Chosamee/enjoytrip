@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/SSAFY/IdeaProjects/enjoytrip/enjoytrip-api/src/main/java/com/ssafy/enjoytrip</OriginalElement>
+  <nodes>
+    <node x="478.8094289508632" y="449.8353253652058">com.ssafy.enjoytrip.service.MemberService</node>
+    <node x="11.309428950863207" y="61.83532536520579">com.ssafy.enjoytrip.util.JWTUtil</node>
+    <node x="522.5594289508632" y="5.83532536520579">com.ssafy.enjoytrip.domain.Member</node>
+    <node x="411.8094289508632" y="766.3353253652058">com.ssafy.enjoytrip.repository.MemberRepository</node>
+    <node x="840.3094289508632" y="435.8353253652058">com.ssafy.enjoytrip.dto.MemberDto</node>
+    <node x="-118.19057104913679" y="435.8353253652058">com.ssafy.enjoytrip.controller.MemberController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.ssafy.enjoytrip.service.MemberService" target="com.ssafy.enjoytrip.repository.MemberRepository" relationship="TO_ONE">
+      <point x="0.0" y="128.0" />
+      <point x="0.0" y="-71.5" />
+    </edge>
+    <edge source="com.ssafy.enjoytrip.service.MemberService" target="com.ssafy.enjoytrip.dto.MemberDto" relationship="CREATE">
+      <point x="144.5" y="0.0" />
+      <point x="-103.0" y="0.0" />
+    </edge>
+    <edge source="com.ssafy.enjoytrip.controller.MemberController" target="com.ssafy.enjoytrip.util.JWTUtil" relationship="TO_ONE">
+      <point x="0.0" y="-142.0" />
+      <point x="0.0" y="156.0" />
+    </edge>
+    <edge source="com.ssafy.enjoytrip.controller.MemberController" target="com.ssafy.enjoytrip.service.MemberService" relationship="TO_ONE">
+      <point x="261.5" y="0.0" />
+      <point x="-144.5" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="채널" zoom="0.7087725903614457" showDependencies="true" x="505.37808764940223" y="482.7458167330677" />
+  <SelectedNodes>
+    <node>com.ssafy.enjoytrip.controller.MemberController</node>
+    <node>com.ssafy.enjoytrip.service.MemberService</node>
+    <node>com.ssafy.enjoytrip.repository.MemberRepository</node>
+    <node>com.ssafy.enjoytrip.util.JWTUtil</node>
+    <node>com.ssafy.enjoytrip.dto.MemberDto</node>
+    <node>com.ssafy.enjoytrip.domain.Member</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>메서드</Category>
+    <Category>필드</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
