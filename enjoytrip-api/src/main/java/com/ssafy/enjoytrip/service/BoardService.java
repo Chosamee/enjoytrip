@@ -82,4 +82,8 @@ public class BoardService {
                 .build();
         boardRepository.modifyArticle(board.getArticleno(), board.getTitle(), board.getContent());
     }
+
+    public void deleteArticle(Long articleno) {
+        boardRepository.deleteById(articleno);
+    }
 }
