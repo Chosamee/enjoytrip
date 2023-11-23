@@ -30,7 +30,7 @@ const logout = async () => {
   <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
     <div class="container-fluid">
       <router-link :to="{ name: 'main' }" class="navbar-brand">
-        <img src="@/assets/ssafy_logo.png" class="rounded mx-auto d-block" alt="..." />
+        <img src="@/assets/enjoytrip.svg" class="img-fluid" alt="..." style="height: 70px"/>
       </router-link>
       <button
         class="navbar-toggler"
@@ -44,7 +44,7 @@ const logout = async () => {
       </button>
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
-          <li class="nav-item">
+<!--          <li class="nav-item">
             <a class="nav-link" href="#">마이캠퍼스</a>
           </li>
           <li class="nav-item">
@@ -61,13 +61,13 @@ const logout = async () => {
               <li><hr class="dropdown-divider" /></li>
               <li><a class="dropdown-item" href="#">학사규정</a></li>
             </ul>
-          </li>
+          </li>-->
           <li class="nav-item">
             <router-link :to="{ name: 'board' }" class="nav-link">게시판</router-link>
           </li>
-          <li class="nav-item">
+<!--          <li class="nav-item">
             <router-link :to="{ name: 'estations' }" class="nav-link">전기차충전소</router-link>
-          </li>
+          </li>-->
         </ul>
         <!-- <form class="d-flex" role="search">
           <input
