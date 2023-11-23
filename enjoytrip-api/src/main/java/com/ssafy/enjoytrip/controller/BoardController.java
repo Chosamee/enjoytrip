@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssafy.enjoytrip.domain.Board;
 import com.ssafy.enjoytrip.dto.BoardDto;
 import com.ssafy.enjoytrip.dto.BoardListDto;
 
@@ -42,11 +41,7 @@ public class BoardController {
             @RequestBody @ApiParam(value = "게시글 정보", required = true) BoardDto boardDto) {
         log.info("writeArticle boardDto - {}", boardDto);
         try {
-            Board board = new Board();
-            board.setTitle(boardDto.getTitle());
-            board.setContent(boardDto.getContent());
-            board.setEmail(boardDto.getEmail());
-            boardService.writeArticle(board);
+            boardService.writeArticle(boardDto);
             return new ResponseEntity<Void>(HttpStatus.CREATED);
         } catch (Exception e) {
             return exceptionHandling(e);

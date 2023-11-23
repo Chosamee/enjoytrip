@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssafy.enjoytrip.domain.Member;
 import com.ssafy.enjoytrip.dto.MemberDto;
 import com.ssafy.enjoytrip.service.MemberService;
 import com.ssafy.enjoytrip.util.JWTUtil;
@@ -40,12 +39,7 @@ public class MemberController {
             @RequestBody @ApiParam(value = "멤버 정보.", required = true) MemberDto memberDto) {
         log.info("registMember memberDto - {}", memberDto.toString());
         try {
-            Member member = new Member();
-            member.setEmail(memberDto.getEmail());
-            member.setName(memberDto.getName());
-            member.setPassword(memberDto.getPassword());
-            memberService.regist(member);
-
+            memberService.regist(memberDto);
             return new ResponseEntity<Void>(HttpStatus.CREATED);
         } catch (Exception e) {
             return exceptionHandling(e);
@@ -59,10 +53,7 @@ public class MemberController {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         HttpStatus status = HttpStatus.ACCEPTED;
         try {
-            Member member = new Member();
-            member.setEmail(memberDto.getEmail());
-            member.setPassword(memberDto.getPassword());
-            memberService.login(member);
+            memberService.login(memberDto);
 
             String accessToken = jwtUtil.createAccessToken(memberDto.getEmail());
             String refreshToken = jwtUtil.createRefreshToken(memberDto.getEmail());
@@ -134,10 +125,7 @@ public class MemberController {
             log.info("사용 가능한 토큰!!!");
             try {
                 // 로그인 사용자 정보.
-                MemberDto memberDto = new MemberDto();
-                Member member = memberService.findByEmail(email);
-                memberDto.setEmail(member.getEmail());
-                memberDto.setName(member.getName());
+                MemberDto memberDto = memberService.findByEmail(email);
                 resultMap.put("userInfo", memberDto);
                 status = HttpStatus.OK;
             } catch (Exception e) {
