@@ -1,0 +1,27 @@
+
+t
+java:S22931"YReplace the type specification in this constructor call with the diamond operator ("<>").(»Ò‘Ρώÿÿÿÿ
+t
+java:S2293;"YReplace the type specification in this constructor call with the diamond operator ("<>").(½Ήσωÿÿÿÿ
+o
+java:S2293Q"YReplace the type specification in this constructor call with the diamond operator ("<>").(έα‡
+o
+java:S2293b"YReplace the type specification in this constructor call with the diamond operator ("<>").(έα‡
+o
+java:S2293z"YReplace the type specification in this constructor call with the diamond operator ("<>").(έα‡
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(έα‡
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ªτπΧ
+A
+java:S1452'"&Remove usage of generic wildcard type.(‰•Ξ¨ψÿÿÿÿ
+<
+java:S14528"&Remove usage of generic wildcard type.(ΉπάΕ
+E	java:S106E"+Replace this use of System.out by a logger.(Λ”†όÿÿÿÿ
+<
+java:S1452V"&Remove usage of generic wildcard type.(ώΘμ±
+<
+java:S1452h"&Remove usage of generic wildcard type.(λα¦τ
+P
+java:S1854„":Remove this useless assignment to local variable "status".(£Ϋλa
+W	java:S125‚"<This block of commented-out lines of code should be removed.(»­Εξύÿÿÿÿ
