@@ -1,3 +1,6 @@
 
-UWeb:AvoidCommentedOutCodeCheck8"Remove this commented out code.(šşÓÓúÿÿÿÿ8ñÓ×Ú¾1
-PWeb:AvoidCommentedOutCodeCheckG"Remove this commented out code.(İŞÕŠ8ô¤îÚ¾1
+UWeb:AvoidCommentedOutCodeChecki"Remove this commented out code.(šşÓÓúÿÿÿÿ8ñÓ×Ú¾1
+PWeb:AvoidCommentedOutCodeCheckz"Remove this commented out code.(İŞÕŠ8ô¤îÚ¾1
+Ojavascript:S6594-"'Use the "RegExp.exec()" method instead.(š»Ûÿÿÿÿÿ8‹ÈåÎ¿1
+cjavascript:S6353-";Use concise character class syntax '\d' instead of '[0-9]'.(š»Ûÿÿÿÿÿ8‹ÈåÎ¿1
+9	css:S4667‚"Unexpected empty source(È¼×Ÿıÿÿÿÿ8Ä³ãÎ¿1

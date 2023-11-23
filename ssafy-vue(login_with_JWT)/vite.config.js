@@ -14,7 +14,9 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: "../enjoytrip-api/src/main/resources/static"
+    outDir: "../enjoytrip-api/src/main/resources/static",
+    emptyOutDir: true,
+    minify: false,
   },
   server: {
     proxy: {

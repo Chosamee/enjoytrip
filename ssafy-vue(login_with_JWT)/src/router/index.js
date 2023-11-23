@@ -31,11 +31,6 @@ const router = createRouter({
       component: TheTripView,
     },
     {
-      path: "/trips",
-      name: "trips",
-      component: TheTripView,
-    },
-    {
       path: "/user",
       name: "user",
       component: () => import("@/views/TheUserView.vue"),

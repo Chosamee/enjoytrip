@@ -15,7 +15,42 @@ const registUser = ref({
   passwordCheck: "",
   name: "",
 });
+
+function checkValidation() {
+  if (registUser.value.email === "") {
+    alert("이메일을 입력해주세요.");
+    return false;
+  }
+  else if (registUser.value.domain === "") {
+    alert("이메일 도메인을 선택해주세요.");
+    return false;
+  }
+  else if (registUser.value.name === "") {
+    alert("이름을 입력해주세요.");
+    return false;
+  }
+  else if (registUser.value.password === "") {
+    alert("비밀번호를 입력해주세요.");
+    return false;
+  }
+  else if (registUser.value.passwordCheck === "") {
+    alert("비밀번호 확인을 입력해주세요.");
+    return false;
+  }
+  else if (registUser.value.password !== registUser.value.passwordCheck) {
+    alert("비밀번호가 일치하지 않습니다.");
+    return false;
+  }
+  // 비밀번호 유효성 검사 (최소 8자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자)
+  else if (!registUser.value.password.match(/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/)) {
+    alert("비밀번호는 최소 8자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자를 입력해주세요.");
+    return false;
+  }
+  return true;
+}
+
 const regist = async () => {
+  if (!checkValidation()) return;
   const loginForm = {
     email: registUser.value.email + "@" + registUser.value.domain,
     password: registUser.value.password,
@@ -23,6 +58,20 @@ const regist = async () => {
   };
   await userRegist(loginForm);
 };
+
+const showPwd = () => {
+  document.querySelector("#userpwd").setAttribute("type", "text");
+};
+const hidePwd = () => {
+  document.querySelector("#userpwd").setAttribute("type", "password");
+};
+const showPwdCheck = () => {
+  document.querySelector("#pwdcheck").setAttribute("type", "text");
+};
+const hidePwdCheck = () => {
+  document.querySelector("#pwdcheck").setAttribute("type", "password");
+};
+
 </script>
 
 <template>
@@ -41,7 +90,7 @@ const regist = async () => {
               <input type="text" class="form-control" v-model="registUser.email" placeholder="이메일아이디"/>
               <span class="input-group-text">@</span>
               <select class="form-select" aria-label="이메일 도메인 선택" v-model="registUser.domain">
-                <option selected>선택</option>
+                <option disabled value="">선택</option>
                 <option value="ssafy.com">싸피</option>
                 <option value="google.com">구글</option>
                 <option value="naver.com">네이버</option>
@@ -59,11 +108,13 @@ const regist = async () => {
           </div>-->
           <div class="mb-3">
             <label for="userpwd" class="form-label">비밀번호 : </label>
-            <input type="text" class="form-control" v-model="registUser.password" placeholder="비밀번호..." />
+            <input id="userpwd" type="password" class="form-control" v-model="registUser.password" placeholder="비밀번호..." />
+            <button type="button" class="btn" @mousedown.left="showPwd" @mouseup.left="hidePwd">비밀번호 보기</button>
           </div>
           <div class="mb-3">
             <label for="pwdcheck" class="form-label">비밀번호확인 : </label>
-            <input type="text" class="form-control" v-model="registUser.passwordCheck" id="pwdcheck" placeholder="비밀번호확인..." />
+            <input id="pwdcheck" type="password" class="form-control" v-model="registUser.passwordCheck" placeholder="비밀번호확인..." />
+            <button type="button" class="btn" @mousedown.left="showPwdCheck" @mouseup.left="hidePwdCheck">비밀번호 확인 보기</button>
           </div>
 
           <div class="col-auto text-center">

@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 import { useMemberStore } from "@/stores/member";
@@ -18,7 +18,28 @@ const loginUser = ref({
   password: "",
 });
 
+function checkValidation() {
+  if (loginUser.value.email === "") {
+    alert("아이디를 입력해주세요.");
+    return false;
+  }
+  else if (!loginUser.value.email.includes("@")) {
+    alert("이메일 형식이 아닙니다.");
+    return false;
+  } // 비밀번호 유효성 검사 (최소 8자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자)
+  else if (!loginUser.value.password.match(/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/)) {
+    alert("비밀번호는 최소 8자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자를 입력해주세요.");
+    return false;
+  }
+  else if (loginUser.value.password === "") {
+    alert("비밀번호를 입력해주세요.");
+    return false;
+  }
+  return true;
+}
+
 const login = async () => {
+  if (!checkValidation()) return;
   await userLogin(loginUser.value);
   let token = sessionStorage.getItem("accessToken");
   if (isLogin.value) {
@@ -26,6 +47,7 @@ const login = async () => {
     changeMenuState();
     router.push({ name: "main" });
   } else {
+    alert("아이디 또는 비밀번호가 일치하지 않습니다.");
     router.push({name: "user-login"})
   }
 };
