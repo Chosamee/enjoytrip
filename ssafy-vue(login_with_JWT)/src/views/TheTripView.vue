@@ -160,7 +160,7 @@ const searchTrips = async () => {
           serviceKey: VITE_OPEN_API_SERVICE_KEY,
           areaCode: searchArea.value == "0" ? "" : searchArea.value,
           contentTypeId: searchContentId.value == "0" ? "" : searchContentId.value,
-          searchKeyword: searchKeyword.value,
+          keyword: searchKeyword.value,
           MobileOS: "ETC",
           MobileApp: "AppTest",
           _type: "json",
